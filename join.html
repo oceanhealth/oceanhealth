@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+    
+
+<head>
+    <meta name="description" content="Ocean Health Cooperative is devoted to creative solutions which protect our ocean." />
+    <meta property="og:title" content="Protect Our Oceans" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="https://ocean.coop/earthwhale.png" />
+    <meta property="og:url" content="https://ocean.coop" />
+    <meta property="og:description"  content="Ocean Health Cooperative is devoted to creative solutions which protect our ocean." />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Protect Our Oceans" />
+    <meta name="twitter:description" content="Ocean Health Cooperative is devoted to creative solutions which protect our ocean." />
+    <meta name="twitter:image" content="https://ocean.coop/earthwhale.png" />
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+        <link rel="stylesheet" href="./css/bootstrap.min.css">
+        
+</head>
+
+<body>
+    <style>
+        body {
+            background-color: #FFFFFF;
+            font-face: "sans-serif";
+            margin: 0px;
+            border-top: 3px solid #417bbe;
+        }
+        .sublink{
+            font-size: 10px;
+            color: gray;
+        }
+        .linkitem{
+            text-align:center;
+            margin:7px;
+        }
+        h1 {
+            margin-bottom:2px;
+        }
+    </style>
+
+    <div class="outer" style="width:100%; margin:0px; ">
+        <div class="main" style="margin:0 auto; max-width:400px; display:flex; flex-direction: column; justify-content: center; align-items:center; ">
+            <a href="/">
+                <img src="./earthwhale.png" style="width:300px; margin-top:60px;"></img>
+            </a>
+            <div style="margin-bottom:6px;">Join List</div>
+            
+
+
+
+            <form id="joinform" style="">
+                <style>
+                   .minibtns{
+                        font-size:12px;   
+                    }
+                </style>
+            
+                <div class="form-group" style=" ">
+                    <label class='frmlabel' for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder=""  style="text-align:start;     display: block;">
+                </div>
+                
+                <div class="form-group" style=" ">
+                    <label class='frmlabel' for="email">Email</label>
+                    <input type="text" class="form-control" id="email" placeholder=""  style="text-align:start;     display: block;">
+                </div>
+
+                <div class="form-group" style=" ">
+                    <label class='frmlabel' for="message">Message</label>
+                    <input type="text" class="form-control" id="message" placeholder=""  style="text-align:start;     display: block;">
+                </div>                
+
+                <div id="sessionfeedback" class="form-group" style="color:#FF5555; font-size:12px; text-align:center;">
+                </div>
+                                
+                <div style="text-align:center; margin-top:18px;">
+                    <button type="submit" id="joinbtn" fn="login"  class="btn btn-primary" >Join</button>
+                    <!--<button id="statusbtn" fn="status"  type="button" class="btn btn-primary minibtns" onclick="test()">Status</button>-->
+                    <!--<button type="button" class="btn btn-primary" onclick="fillx()" style="background-color:none; ">Demo</button>-->
+                </div>
+            </form>                
+
+            <br>
+            <br>                
+
+
+            <div class="sublink" >CONTACT</div>
+            <div style="font-size:13px;">OceanHealthCoop@gmail.com</div>
+            <div class="sublink">&#169; 2022-2023 Ocean.coop</div>
+
+        </div>
+    </div>
+
+
+    
+
+    <script async src="//static.getclicky.com/101378225.js"></script>
+    <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/101378225ns.gif" /></p></noscript>    
+    
+    <script src="./js/airtable.browser.js">  </script>
+
+    <script>
+
+        var Airtable = require('airtable');
+        var base = new Airtable({apiKey: 'keysix7aMS6YGTSrW'}).base('appOg4vYowFHAoUvr');
+
+
+        var s = document.querySelector('#joinform')
+            
+        s.addEventListener('submit', (event) => {
+
+            event.preventDefault();
+            
+            base('users').create([
+              {
+                "fields": {
+                   "name":event.currentTarget.elements['name'].value,
+                  "email":event.currentTarget.elements['email'].value,
+                    "aux":event.currentTarget.elements['message'].value
+                }
+              }
+            ], function(err, records) {
+              if (err) {
+                console.error(err);
+                return;
+              }else{
+
+                   var field=document.getElementById('sessionfeedback')
+                field.innerHTML='<p style="color:green;">Thank You</p>'               
+              }
+
+
+              records.forEach(function (record) {
+                console.log(record.getId());
+              });
+            });
+
+            console.log('submit')
+        });
+        
+
+
+
+        
+    </script>
+    
+
+</body>
+
+</html>
