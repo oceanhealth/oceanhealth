@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html>
 
-    
+
 
 <head>
-    <meta name="description" content="Ocean Health Cooperative is devoted to creative solutions which protect our ocean." />
+    <meta name="description"
+        content="Ocean Health Cooperative is devoted to creative solutions which protect our ocean." />
     <meta property="og:title" content="Protect Our Oceans" />
     <meta property="og:type" content="article" />
     <meta property="og:image" content="https://ocean.coop/earthwhale.png" />
     <meta property="og:url" content="https://ocean.coop" />
-    <meta property="og:description"  content="Ocean Health Cooperative is devoted to creative solutions which protect our ocean." />
+    <meta property="og:description"
+        content="Ocean Health Cooperative is devoted to creative solutions which protect our ocean." />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Protect Our Oceans" />
-    <meta name="twitter:description" content="Ocean Health Cooperative is devoted to creative solutions which protect our ocean." />
+    <meta name="twitter:description"
+        content="Ocean Health Cooperative is devoted to creative solutions which protect our ocean." />
     <meta name="twitter:image" content="https://ocean.coop/earthwhale.png" />
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
-        <link rel="stylesheet" href="./css/bootstrap.min.css">
-        
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/main.css">
 </head>
 
 <body>
@@ -28,66 +31,73 @@
             margin: 0px;
             border-top: 3px solid #417bbe;
         }
-        .sublink{
+
+        .sublink {
             font-size: 10px;
             color: gray;
         }
-        .linkitem{
-            text-align:center;
-            margin:7px;
+
+        .linkitem {
+            text-align: center;
+            margin: 7px;
         }
+
         h1 {
-            margin-bottom:2px;
+            margin-bottom: 2px;
         }
     </style>
 
     <div class="outer" style="width:100%; margin:0px; ">
-        <div class="main" style="margin:0 auto; max-width:400px; display:flex; flex-direction: column; justify-content: center; align-items:center; ">
+        <div class="main"
+            style="margin:0 auto; max-width:400px; display:flex; flex-direction: column; justify-content: center; align-items:center; ">
             <a href="/">
                 <img src="./earthwhale.png" style="width:300px; margin-top:60px;"></img>
             </a>
             <div style="margin-bottom:6px;">Join List</div>
-            
 
 
 
-            <form id="joinform" style="">
+
+            <form style="" id="signupform">
                 <style>
-                   .minibtns{
-                        font-size:12px;   
+                    .minibtns {
+                        font-size: 12px;
                     }
                 </style>
-            
+
                 <div class="form-group" style=" ">
                     <label class='frmlabel' for="name">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder=""  style="text-align:start;     display: block;">
+                    <input type="text" class="form-control" id="name" placeholder=""
+                        style="text-align:start;     display: block;">
                 </div>
-                
+
                 <div class="form-group" style=" ">
                     <label class='frmlabel' for="email">Email</label>
-                    <input type="text" class="form-control" id="email" placeholder=""  style="text-align:start;     display: block;">
+                    <input type="text" class="form-control" id="email" placeholder=""
+                        style="text-align:start;     display: block;">
                 </div>
 
                 <div class="form-group" style=" ">
                     <label class='frmlabel' for="message">Message</label>
-                    <input type="text" class="form-control" id="message" placeholder=""  style="text-align:start;     display: block;">
-                </div>                
+                    <input type="text" class="form-control" id="message" placeholder=""
+                        style="text-align:start;     display: block;">
+                </div>
 
                 <div id="sessionfeedback" class="form-group" style="color:#FF5555; font-size:12px; text-align:center;">
                 </div>
-                                
+
                 <div style="text-align:center; margin-top:18px;">
-                    <button type="submit" id="joinbtn" fn="login"  class="btn btn-primary" >Join</button>
+                    <button id="authbtn" fn="login" type="submit" class="btn btn-primary">Join</button>
                     <!--<button id="statusbtn" fn="status"  type="button" class="btn btn-primary minibtns" onclick="test()">Status</button>-->
                     <!--<button type="button" class="btn btn-primary" onclick="fillx()" style="background-color:none; ">Demo</button>-->
                 </div>
-            </form>                
+            </form>
 
             <br>
-            <br>                
+            <br>
 
 
-            <div class="sublink" >CONTACT</div>
+            <div class="sublink">CONTACT</div>
             <div style="font-size:13px;">OceanHealthCoop@gmail.com</div>
             <div class="sublink">&#169; 2022-2023 Ocean.coop</div>
 
@@ -95,58 +105,116 @@
     </div>
 
 
-    
+
 
     <script async src="//static.getclicky.com/101378225.js"></script>
-    <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/101378225ns.gif" /></p></noscript>    
-    
+    <noscript>
+        <p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/101378225ns.gif" /></p>
+    </noscript>
+
     <script src="./js/airtable.browser.js">  </script>
 
     <script>
 
-        var Airtable = require('airtable');
-        var base = new Airtable({apiKey: 'keysix7aMS6YGTSrW'}).base('appOg4vYowFHAoUvr');
+        // var Airtable = require('airtable');
+        // var base = new Airtable({ apiKey: 'keysix7aMS6YGTSrW' }).base('appOg4vYowFHAoUvr');
+
+        // //keyFXudRMHLWPSMQo
+        // base('users').create([
+        //     {
+        //         "fields": {
+        //             "name": "DOISO DIOIS",
+        //             "email": "miao@doiso.com",
+        //             "phone": "(123) 456-7890",
+        //             "tags":"mailinglist",
+        //             "aux": "Engineer"
+        //         }
+        //     }
+        // ], function (err, records) {
+        //     if (err) {
+        //         console.error(err);
+        //         return;
+        //     }
+        //     records.forEach(function (record) {
+        //         console.log(record.getId());
+        //     });
+        // });
+
+        
 
 
-        var s = document.querySelector('#joinform')
-            
-        s.addEventListener('submit', (event) => {
 
-            event.preventDefault();
-            
-            base('users').create([
-              {
-                "fields": {
-                   "name":event.currentTarget.elements['name'].value,
-                  "email":event.currentTarget.elements['email'].value,
-                    "aux":event.currentTarget.elements['message'].value
-                }
-              }
-            ], function(err, records) {
-              if (err) {
-                console.error(err);
-                return;
-              }else{
-
-                   var field=document.getElementById('sessionfeedback')
-                field.innerHTML='<p style="color:green;">Thank You</p>'               
-              }
-
-
-              records.forEach(function (record) {
-                console.log(record.getId());
-              });
+        // Example POST method implementation:
+        async function postData(url = '', data = {}) {
+            // Default options are marked with *
+            console.log(' posting; ')
+            const response = await fetch(url, {
+                method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                mode: 'cors', // no-cors, *cors, same-origin
+                cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                credentials: 'same-origin', // include, *same-origin, omit
+                headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                redirect: 'follow', // manual, *follow, error
+                referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                body: JSON.stringify(data) // body data type must match "Content-Type" header
             });
+            return response.json(); // parses JSON response into native JavaScript objects
+        }
 
-            console.log('submit')
-        });
+
+
+
+
+
+
+
+
+        const form = document.querySelector("#signupform");
         
+        form.addEventListener("submit", function (event) {
+        	// stop form submission
+            console.log('iopi')
+        	event.preventDefault();
 
 
-
-        
-    </script>
     
+    
+    
+            var dat = {
+                data:{ 
+                    email:form.elements["email"].value,
+                    name:form.elements["name"].value,
+                    message:form.elements["message"].value,
+                    tags:'mailinglist'
+                }
+    
+            }
+    
+            postData('https://base.ocean.coop/api/v1/db/public/shared-view/6b7e7cc3-68de-48c7-a756-0b369db1f88f/rows', dat )
+            .then((data) => {
+                console.log(data); // JSON data parsed by `data.json()` call
+            });        
+            
+        
+        	// validate the form
+        	//let nameValid = hasValue(, NAME_REQUIRED);
+        	//let emailValid = validateEmail(form.elements["email"], EMAIL_REQUIRED, EMAIL_INVALID);
+        	// if valid, submit the form.
+        	//if (nameValid && emailValid) {
+        	console.log(' wut ')
+        	//}
+        });
+
+
+
+
+        
+
+    </script>
+
 
 </body>
 
