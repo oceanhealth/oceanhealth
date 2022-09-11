@@ -187,7 +187,7 @@
                 data:{ 
                     email:form.elements["email"].value,
                     name:form.elements["name"].value,
-                    message:form.elements["message"].value,
+                    phone:form.elements["message"].value,
                     tags:'mailinglist'
                 }
     
@@ -196,6 +196,8 @@
             postData('https://base.ocean.coop/api/v1/db/public/shared-view/6b7e7cc3-68de-48c7-a756-0b369db1f88f/rows', dat )
             .then((data) => {
                 console.log(data); // JSON data parsed by `data.json()` call
+
+                document.querySelector('#sessionfeedback').innerHTML='<span style="color:green">Thank You!</span>';
             });        
             
         
