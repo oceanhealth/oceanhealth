@@ -1,5 +1,12 @@
 const request = require('request');
 
+
+warptok1 = '_QXjbAsRBOwEDv-tVGgc'
+warptok2 = ''
+warptok3 = 'dbVl2mvCe5PUIIem'
+warptok4 = 'Ff'
+warptok5 = warptok1 + ''+10+1+'' + warptok3 + warptok4; 
+
 function listPerTag( tag ){
 
     var qwer='where=(tags,like,'+tag+')'
@@ -14,8 +21,9 @@ function listPerTag( tag ){
     };
     request(options, function (error, response, body) {
         if (error) throw new Error(error);
-        //console.log(body);
+        
         console.log('\n', tag.toUpperCase() )
+        console.log(body);
         for ( var i in body.list ){
             var unit = body.list[i];
             console.log('[('+i+')]' ,unit.email ,'     ', unit.name , unit.tags );

@@ -116,33 +116,6 @@
 
     <script>
 
-        // var Airtable = require('airtable');
-        // var base = new Airtable({ apiKey: 'keysix7aMS6YGTSrW' }).base('appOg4vYowFHAoUvr');
-
-        // //keyFXudRMHLWPSMQo
-        // base('users').create([
-        //     {
-        //         "fields": {
-        //             "name": "DOISO DIOIS",
-        //             "email": "miao@doiso.com",
-        //             "phone": "(123) 456-7890",
-        //             "tags":"mailinglist",
-        //             "aux": "Engineer"
-        //         }
-        //     }
-        // ], function (err, records) {
-        //     if (err) {
-        //         console.error(err);
-        //         return;
-        //     }
-        //     records.forEach(function (record) {
-        //         console.log(record.getId());
-        //     });
-        // });
-
-        
-
-
 
         // Example POST method implementation:
         async function postData(url = '', data = {}) {
@@ -167,6 +140,53 @@
 
 
 
+        
+        function sendToAir( obj_in ){
+            
+            var Airtable = require('airtable');
+            var base = new Airtable({ apiKey: 'keysix7aMS6YGTSrW' }).base('appOg4vYowFHAoUvr');
+    
+            base('users').create([
+                {
+                    "fields": {
+                        "name": obj_in.name,
+                        "email": obj_in.email,
+                        "phone": obj_in.phone
+                    }
+                }
+            ], function (err, records) {
+                if (err) {
+                    console.error(err);
+                    return;
+                }
+                records.forEach(function (record) {
+                    console.log(record.getId());
+                });
+            });
+            
+        }
+
+
+        function sendToBase( obj_in ){
+
+            var dat = {
+                data:obj_in
+            }
+            postData('https://base.ocean.coop/api/v1/db/public/shared-view/6b7e7cc3-68de-48c7-a756-0b369db1f88f/rows', dat )
+            .then((data) => {
+                console.log(data); // JSON data parsed by `data.json()` call
+
+                document.querySelector('#sessionfeedback').innerHTML='<span style="color:green">Thank You!</span>';
+            });      
+
+            
+        }
+
+        
+
+
+
+
 
 
 
@@ -175,39 +195,19 @@
         const form = document.querySelector("#signupform");
         
         form.addEventListener("submit", function (event) {
-        	// stop form submission
-            console.log('iopi')
+
         	event.preventDefault();
 
-
-    
-    
-    
-            var dat = {
-                data:{ 
-                    email:form.elements["email"].value,
-                    name:form.elements["name"].value,
-                    phone:form.elements["message"].value,
-                    tags:'mailinglist'
-                }
-    
+            var out_obj = { 
+                email:form.elements["email"].value,
+                name:form.elements["name"].value,
+                phone:form.elements["message"].value,
+                tags:'mailinglist'
             }
-    
-            postData('https://base.ocean.coop/api/v1/db/public/shared-view/6b7e7cc3-68de-48c7-a756-0b369db1f88f/rows', dat )
-            .then((data) => {
-                console.log(data); // JSON data parsed by `data.json()` call
 
-                document.querySelector('#sessionfeedback').innerHTML='<span style="color:green">Thank You!</span>';
-            });        
-            
-        
-        	// validate the form
-        	//let nameValid = hasValue(, NAME_REQUIRED);
-        	//let emailValid = validateEmail(form.elements["email"], EMAIL_REQUIRED, EMAIL_INVALID);
-        	// if valid, submit the form.
-        	//if (nameValid && emailValid) {
-        	console.log(' wut ')
-        	//}
+            sendToBase( out_obj );
+            sendToAir( out_obj );
+
         });
 
 
