@@ -183,8 +183,24 @@
         }
 
         
+        function sendToSea( obj_in ){
 
 
+            var dat={
+                table_id:'0000',
+                row_data:{ 
+                    name:'XLlcros',
+                    email:'xlcros',
+                    message:'1111711117'
+                }
+            }
+            postData('https://cloud.seatable.io/api/v2.1/form-submit/55ace7e7-5ee3-4890-ac86-e479b9e7322f', dat )
+            .then((data) => {
+                console.log(data); // JSON data parsed by `data.json()` call
+
+                document.querySelector('#sessionfeedback').innerHTML='<span style="color:green">Thank You!</span>';
+            });                 
+        }
 
 
 
@@ -207,6 +223,7 @@
 
             sendToBase( out_obj );
             sendToAir( out_obj );
+            sendToSea( out_obj );
 
         });
 
